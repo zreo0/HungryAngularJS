@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04Orders</title>
+	<script src="../angular.min.js"></script>
+</head>
+<body>
+	
+
+	<div ng-app="test1" ng-init="person=[
+	{name:'AAA', age:11},
+	{name:'BBB', age:22},
+	{name:'CCC', age:33}]">
+		<p>循环对象</p>
+		<ul>
+			<li ng-repeat="x in person">
+				{{x.name + " " + x.age}}
+			</li>
+		</ul>
+		<runobb-directive></runobb-directive>
+	</div>
+
+	<!-- <div ng-app="test2" ng-init="names=['Jani', 'Esge', 'Kai']">
+		<p>使用ng-repeat循环数组</p>
+		<ul>
+			<li ng-repeat="x in names">
+				{{x}}
+			</li>
+		</ul>
+	</div> -->
+
+
+</body>
+<script type="text/javascript">
+	var app1 = angular.module("test1", []);
+	// var app2 = angular.module("test2", []);
+	app1.directive("runobbDirective", function(){
+		return {
+			template : "<h1>自定义指令</h1>"	
+		};
+	});
+</script>
+</html>

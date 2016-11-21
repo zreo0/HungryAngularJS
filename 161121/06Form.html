@@ -1,0 +1,122 @@
+<!-- <!DOCTYPE html>
+<html lang="en" ng-app="myTest">
+<head>
+	<meta charset="UTF-8">
+	<title>06Form</title>
+	<link rel="stylesheet" href="http://apps.bdimg.com/libs/todc-bootstrap/3.1.1-3.2.1/todc-bootstrap.min.css">
+	<script src="../angular.min.js"></script>
+	
+</head>
+<body ng-controller="myController">
+	<div class="col-md-6">
+		<form action="" role="form" name="myForm" ng-submit="submitForm(myForm.$valid)" class="form-horizontal" novalidate>
+			<div class="form-group has-feedback">
+				<div class="col-md-4">
+					<label for="name">1.必填项</label>
+				</div>
+				<div class="col-md-8">
+					<input type="text" name="name" id="name" class="form-control" required ng-model="user.name" />
+					<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="myForm.name.$dirty && myForm.name.$valid">111</span>
+				</div>
+			</div>
+			<div class="form-group has-feedback">
+				<div class="col-md-4">
+					<label for="minlength">2.最小长度=5</label>
+				</div>
+				<div class="col-md-8">
+					<input type="text" id="minlength" name="minlength" ng-minlength=5 ng-model="user.minlength" class="form-control"/>
+					<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="myForm.minlength.dirty && myForm.minlength.$valid">111</span>
+				</div>
+			</div>
+
+			<div class="form-group has-feedback">
+				<div class="col-md-4">
+					<label for="pattern">4.模式匹配</label>
+				</div>
+				<div class="col-md-8">
+					<input type="text" name="pattern" id="pattern" ng-model="user.pattern" ng-pattern="/^[a-zA-Z]*\d$/" class="form-control /">
+					<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="myForm.pattern.$dirty && myForm.pattern.$valid
+					">111</span>
+				</div>
+			</div>
+
+			<div class="form-group has-feedback">
+				<div class="col-md-4">
+					<label for="age">6.数字</label>
+				</div>
+				<div class="col-md-8">
+					<input type="number" id="age" name="age" ng-model="user.age" class="form-control"/>
+					<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="myForm.age.$dirty && myForm.age.$valid">111</span>
+				</div>
+			</div>
+
+			<div class="form-group has-feedback">
+				<div class="col-md-4">
+					<label for="url">7.URL</label>
+				</div>
+				<div class="col-md-8">
+					<input type="url" name="url" id="url" ng-model="user.url" class="form-control" />
+					<span class="glyphicon glyphicon-ok form-control-feedback" ng-show="myForm.url.$dirty $$ myForm.url.$valid">111</span>
+				</div>
+			</div>
+			<div class="form-group text-center">
+				<input type="submit" name="submit" class="btn btn-primary btn-lg" ng-disabled="myForm.$invalid" value="提交" />
+			</div>
+		</form>
+	</div>
+	<div class="col-md-12">
+		{{user.name}}
+	</div>
+</body>
+<script type="text/javascript">
+	/**
+	* myTest Module
+	*
+	* Test for Form
+	*/
+	angular.module('myTest', []).controller('myController',  function($scope){
+		
+	});
+</script>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en" ng-app="myTest">
+<head>
+	<meta charset="UTF-8">
+	<title>06Form</title>
+	<script src="../angular.min.js"></script>
+</head>
+<body ng-controller="myController">
+	<div class="container">
+		<form action="" name="myForm" ng-submit="submitForm(myForm.$valid)" novalidate>
+			<label for="name">1.必填项</label>
+			<input type="text" name="name" id="name" ng-model="user.name" required="true" />
+			<span ng-show="myForm.name.$dirty && myForm.name.$valid">success</span>
+			<br/>
+
+			<label for="age">2.年龄</label>
+			<input step=5 type="number" name="age" id="age" ng-model="user.age" />
+			<span ng-show="myForm.age.$dirty && myForm.age.$valid">success</span>
+			<br/>
+
+			<label for="minlength">3.最小长度5 最大长度10</label>
+			<input type="text" id="minlength" name="minlength" ng-model="minlength" ng-minlength="5" ng-maxlength="10" />
+			<span ng-show="myForm.minlength.$dirty && myForm.minlength.$valid">success</span>
+			<br/>
+
+			<label for="touch">4.touched</label>
+			<input type="text" id="touch" name="touch" ng-model="touch" />
+			<span ng-show="myForm.touch.$ng-touched">success</span>
+			<br/>
+
+		</form>
+	</div>
+</body>
+<script>
+	var app = angular.module("myTest",[]);
+	app.controller('myController', ['$scope', function(s){
+		
+	}]);
+</script>
+</html>

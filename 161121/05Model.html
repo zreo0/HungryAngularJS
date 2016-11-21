@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05Model</title>
+	<script src="../angular.min.js"></script>
+</head>
+<body>
+	<form action="" ng-app="" name="myForm" ng-init="myText='test@test.com'">
+		Email:<input type="email" name="myAddress" ng-model="myText" required />
+		<!-- <span ng-show="myForm.myAddress.$error.email">Not an Email!</span> -->
+		{{myForm.myAddress.$valid}}
+		{{myForm.myAddress.$dirty}}
+		{{myForm.myAddress.$touched}}
+	</form>
+</body>
+</html>
