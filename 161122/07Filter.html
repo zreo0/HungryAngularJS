@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07Filter</title>
+	<script src="../angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="test1" ng-controller="myController">
+		
+		<ul>
+            <li>
+                <span>序号</span>
+                <span>姓名</span>
+                <span>性别</span>
+                <span>年龄</span>
+                <span>分数</span>
+            </li>
+            <li ng-repeat='stu in data | young:0'>
+                <span>{{$index+1}}</span>
+                <span>{{stu.name}}</span>
+                <span>{{stu.gender}}</span>
+                <span>{{stu.age}}</span>
+                <span>{{stu.score}}</span>
+            </li>
+        </ul>
+
+	</div>
+
+
+</body>
+<script type="text/javascript">
+	var app = angular.module("test1", []);
+	app.controller('myController', function($scope){
+		$scope.data = [
+			{name:'Lily', gender:'F', age:20, score:90},
+			{name:'Helios', gender:'M', age:22, score:92},
+			{name:'Lily', gender:'F', age:22, score:80},
+			{name:'Lily', gender:'F', age:21, score:97},
+			{name:'Lily', gender:'F', age:20, score:78}
+		];
+
+	});
+
+	app.filter('young', function(){
+		return function(e, type){
+			var _out = [];
+			var _gender = type?'M':'F';
+			for(var i = 0; i < 5; i++){
+				if (e[i].age > 20 && e[i].age < 28 && e[i].gender == _gender) {
+					_out.push(e[i]);
+				}
+				console.log(_out);
+			}
+			return _out;
+		}
+	});
+</script>
+</html>
