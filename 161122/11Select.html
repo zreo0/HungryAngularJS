@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>11Select</title>
+	<script src="../angular.min.js"></script>
+</head>
+<body>
+	<div ng-controller="myCtrl">
+		<select name="country" id="country" ng-options="x for x in names" ng-model="selectedName" ng-options="select as label for value in array">
+		</select>
+
+		<select>
+			<option value="" ng-repeat="x in names">{{x}}</option>
+		</select>
+	</div>
+	<script type="text/javascript">
+		var app = angular.module("myApp", []);
+		app.controller('myCtrl', ['$scope', function($scope){
+			$scope.names = ['China', 'USA', 'UK'];
+		}]);
+	</script>
+</body>
+</html>

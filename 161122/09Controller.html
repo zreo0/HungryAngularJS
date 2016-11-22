@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>09Controller</title>
+	<script src="../angular.min.js"></script>
+
+</head>
+<body>
+	<div ng-controller="myController">
+		<input type="text" name="firstName" ng-model="firstName" id="firstName" />
+		<input type="text" name="lastName" ng-model="lastName" id="lastName" />
+		<p>YouName: {{firstName}}  {{lastName}}</p>
+		<p ng-bind="fullName()"></p>
+		<ul>
+			<li ng-repeat="x in names | orderBy: 'age'">{{((x.name) |uppercase)+ '@' + x.age}}</li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="09Controller.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>10Service</title>
+	<script src="../angular.min.js"></script>
+</head>
+<body ng-controller="myCtrl">
+	{{myUrl}}
+	{{myHeader}}
+	{{theTime}}
+	{{tNum}}
+	<ul>
+		<li ng-repeat="x in sites">{{x.Name + " " + x.Country}}</li>
+	</ul>
+	<script type="text/javascript">
+		var app = angular.module("myApp",[]);
+		app.service('change', function(){
+			this.changeNum = function(x){
+				return x.toString(16);
+			};
+		});
+		app.controller('myCtrl', ['$scope','$location', '$timeout', '$interval', 'change','$http', function($scope, $location, $timeout, $interval, change, $http){
+			//$location
+			$scope.myUrl = $location.absUrl();
+			//$timeout
+			$scope.myHeader = 'Hello world!';
+			$timeout(function(){
+				$scope.myHeader = 'How Are You?';
+			},2000);
+			//$interval
+			$scope.theTime = new Date().toLocaleTimeString();
+			$interval(function(){
+				$scope.theTime = new Date().toLocaleTimeString();
+			}, 1000);
+			//$service
+			$scope.tNum = change.changeNum(255);
+			//$http
+			$http.get("http://www.runoob.com/try/angularjs/data/sites.php").success(function(response){
+					$scope.sites = response.sites;
+			});
+		}]);
+
+	</script>
+</body>
+</html>
