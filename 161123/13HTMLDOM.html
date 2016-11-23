@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>13HTMLDOM</title>
+	<script src="../angular.min.js"></script>
+</head>
+<body ng-controller="myCtrl">
+	<div>
+		<button ng-disabled="mySwitch">Click me!</button>
+		<p>
+			<input type="checkbox" ng-model="mySwitch" />button
+		</p>
+		<p>{{mySwitch}}</p>
+
+		<p ng-show="true">Show</p>
+		<p ng-show="false">Hide</p>
+		<p ng-hide="true">Hide</p>
+		<p ng-hide="false">Show</p>
+	</div>
+	<script type="text/javascript">
+		var app = angular.module("myApp", []);
+		app.controller('myCtrl', function($scope){
+			$scope.mySwitch = true;
+		});
+	</script>
+</body>
+</html>

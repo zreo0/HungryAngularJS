@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>16API</title>
+	<script src="../angular.min.js"></script>
+</head>
+<body ng-controller="myCtrl">
+	<p>{{bigName}}</p>
+	<script>
+		var app = angular.module("myApp", []);
+		app.controller('myCtrl', ['$scope', function($scope){
+			$scope.user = {name: 'fck', age: 20};
+			$scope.bigName	= angular.isNumber($scope.user.age);
+		}]);
+	</script>
+</body>
+</html>

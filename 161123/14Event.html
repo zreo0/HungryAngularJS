@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>14Event</title>
+	<script src="../angular.min.js"></script>
+</head>
+<body ng-controller="myCtrl">
+	<div>
+		<button ng-click="count = count + 1">Click me !</button>
+		<p>{{count}}</p>
+	</div>
+	<hr/>
+	<div>
+		<button ng-click="change()">Show/Hide</button>
+		<div ng-show="tag">
+			<input type="text" name="firstName" ng-model="firstName" />
+			<input type="text" name="lastName" ng-model="lastName" />
+			<p>Name: {{firstName + ' ' + lastName}}</p>
+		</div>
+	</div>
+	<hr/>
+	<div>
+		<label>First Name:</label>
+		<input type="text" ng-model="user.firstName" />
+		<br/>
+		<label>Last Name:</label>
+		<input type="text" ng-model="user.lastName" />
+		<br/>
+		<button ng-click="reset()">reset</button>
+		<br>
+		<p>{{user}}</p>
+		<p>{{master}}</p>
+		
+	</div>
+	<script type="text/javascript">
+		var app = angular.module("myApp", []);
+		app.controller("myCtrl", function($scope) {
+			$scope.count = 0;
+			$scope.firstName = "John";
+			$scope.lastName  = "Doe";
+			$scope.tag = true;
+			$scope.change = function(){
+				$scope.tag = !$scope.tag;
+			};
+			
+			$scope.master = {firstName: 'Hello', lastName: 'World'};
+			// $scope.user   = {firstName: 'Hello', lastName: 'World'};
+			$scope.reset  = function(){
+				$scope.user = angular.copy($scope.master);
+			};
+			$scope.reset();
+
+		})
+	</script>
+</body>
+</html>

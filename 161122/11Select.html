@@ -7,18 +7,70 @@
 </head>
 <body>
 	<div ng-controller="myCtrl">
+		{{test}}
 		<select name="country" id="country" ng-options="x for x in names" ng-model="selectedName" ng-options="select as label for value in array">
 		</select>
 
 		<select>
 			<option value="" ng-repeat="x in names">{{x}}</option>
 		</select>
+		
+		<!-- 可以看到循环出来的label就是item.name，但是value值应该是随机搞出来的 -->
+		<select ng-options="item.url as item.name for item in sites" ng-model="test.url"></select>
+
+		<!-- item.id 会和 test.id 进行对比，如果一样，会默认选到这一项option；当选择某一项option时会把当前的id赋值给test.id。 -->
+		<select name="test" id="test" ng-model="test.id" ng-options="item.id as item.name for item in list"></select>
+
+		<!-- 这种情况是在基本配置下多了一个track by，是用来指定索引项，在这里value就是item.id。 -->
+		<select ng-model="test" ng-options="item.name for item in list track by item.name"></select>
+		
+		<!-- 依据item.type分成了两组数据 -->
+		<select ng-model="test.name" ng-options="item.name group by item.type for item in list track by item.id">
+		</select>
+
+		<!-- 对象的用法 -->
+		<select name="" id="" ng-model="test" ng-options="key group by value for (key, value) in list2"></select>
 	</div>
 	<script type="text/javascript">
 		var app = angular.module("myApp", []);
 		app.controller('myCtrl', ['$scope', function($scope){
 			$scope.names = ['China', 'USA', 'UK'];
+
+			$scope.sites = [{name:'Google', url:'http://gooogle.com'},
+							{name:'Baidu',  url:'http://baidu.com'},
+							{name:'tencent',url:'http://im.qq.com'}];
+
+			$scope.list = [{
+				name: 'admin1',
+				id 	: 1,
+				data: [12],
+				type: 'open'
+			},{
+				name: 'admin2',
+				id 	: 2,
+				data: [266],
+				type: 'open'
+			},{
+				name: 'admin3',
+				id 	: '3',
+				data: [1244],
+				type: 'close'
+			},{
+				name: 'admin4',
+				id 	: 4,
+				data: [219],
+				type: 'open'
+			}];
+			$scope.test = {name: "admin1", id: 3, data: [12], type: 'open'};
+
+			$scope.list2 = {
+				name: 'Hell',
+				age : 20,
+				sex : 'Male'
+			};
+
 		}]);
+		
 	</script>
 </body>
 </html>

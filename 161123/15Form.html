@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>15Form</title>
+	<script src="../angular.min.js"></script>
+	<style>
+		input.ng-valid{
+			border: 1px solid blue;
+		}
+
+		input.ng-invalid{
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body ng-controller="myCtrl">
+	<div>
+		<form action="#" name="myForm" novalidate>
+			<input type="text" name="username" ng-model="username" required />
+			<span ng-show="myForm.username.$dirty && myForm.username.$invalid" style="color: red">UserName Is Required!</span>
+			<br>
+			<input type="text" name="password" ng-model="password" required />
+			<span ng-show="myForm.password.$dirty && myForm.password.$invalid" style="color: red">Password Is Required!</span>
+			<br>
+			<input type="email" name="email" ng-model="email" required />
+			<span ng-show="myForm.email.$dirty && myForm.email.$invalid" style="color: red">
+				<span ng-show="myForm.email.$dirty && myForm.email.$error.required">Email Is Required!</span>
+				<span ng-show="myForm.email.$dirty && myForm.email.$error.email">Wrong Email!</span>
+			</span>
+		</form>
+	</div>
+	<script type="text/javascript">
+		var app = angular.module("myApp", []);
+		app.controller('myCtrl', ['$scope', function($scope){
+			$scope.username = "Username";
+			$scope.password = "Password";
+			$scope.email 	= "123@qq.com"
+		}]);
+	</script>
+</body>
+</html>
