@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>19Animate</title>
+	<script type="text/javascript" src="../angular.min.js"></script>
+	<script type="text/javascript" src="../angular-animate.js"></script>
+	<style>
+		.myDiv1{
+			transition: all linear 0.5s;
+			width: 100px;
+			height: 100px;
+			background-color: #666;
+			position: relative;
+			top: 0;
+			left: 0;
+		}
+		.ng-hide{
+			height: 0;
+			width: 0;
+			background-color: transparent;
+			top: -200px;
+			left: 50px;
+			animation: 0.5s myChange2;
+		}
+
+		@keyframes myChange2{
+			from{
+				height: 100px;
+				width: 100px;
+			}to{
+				height: 0px;
+				width: 0px;
+			}
+		}
+
+		.myDiv2{
+			height: 100px;
+			width: 100px;
+			background-color: red;
+
+		}
+
+	</style>
+</head>
+<body>
+	隐藏DIV：
+	<input type="checkbox" ng-model="myCheck">
+	<div ng-hide="myCheck" class="myDiv1"></div>
+
+	<hr>
+
+	<input type="checkbox" ng-model="myCheck2">
+	<div ng-hide="myCheck2" class="myDiv2"></div>
+	<hr>
+
+	<script>
+		var app = angular.module("myApp",['ngAnimate']);
+	</script>
+</body>
+</html>
