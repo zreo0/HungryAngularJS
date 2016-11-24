@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>22Directive</title>
+	<script type="text/javascript" src="../angular.min.js"></script>
+</head>
+<body>
+	
+	<div ng-controller="myCtrl">
+		<loader howToLoad="loadData()">滑动加载</loader>
+		<hello></hello>
+	<hello></hello>
+	<hello></hello>
+	<hello></hello>
+	</div>
+	<div ng-controller="myCtrl2">
+		<loader howToLoad="loadData2()">滑动加载</loader>
+	</div>
+	
+	<script type="text/javascript">
+		var myApp = angular.module('myApp',[]);
+		myApp.directive('hello',function(){
+			return {
+				restrict : 'AE',
+				scope :{},
+				template:'<div><input type="text" ng-model="userName" />{{userName}}</div>'
+			}
+		});
+
+
+
+		myApp.controller('myCtrl', ['$scope', function($scope){
+			$scope.loadData = function(){
+				console.log("Loading……");
+			}
+		}]);
+		myApp.controller('myCtrl2', ['$scope', function($scope){
+			$scope.loadData2 = function(){
+				console.log("Loading222……");
+			}
+		}]);
+		myApp.directive('loader', function(){
+			return {
+				restrict: 'AE',
+				link	: function(scope, element, attr){
+					element.bind('mouseenter', function(){
+						// scope.loadData();
+						scope.$apply(attr.howtoload);		//注意attr后面需要小写
+					});
+				}
+			}
+		});
+		
+	</script>
+</body>
+</html>
