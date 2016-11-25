@@ -1,33 +1,29 @@
-<div class="panel panel-primary">
+<div class="loginContainer">
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-md-12">
-				<h2 class="text-center">图书管理系统</h2>
+				<h2 class="text-center">图书馆</h2>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<form class="form-horizontal" role="form">
+				<form class="form-horizontal" role="form" name="loginForm" novalidate>
 					<div class="form-group">
-						<label for="username" class="col-md-2 control-label">
-							用户名：
-						</label>
-						<div class="col-md-10">
-							<input type="email" class="form-control" placeholder="Email" ng-model="userInfo.email" name="username" id="username" />
+						
+						<div class="col-md-12">
+							<input type="email" class="form-control" placeholder="请输入用户名/邮箱/手机号" ng-model="userInfo.email" name="username" id="username" required= />
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="password" class="col-md-2 control-label">
-							密码：
-						</label>
-						<div class="col-md-10">
-							<input type="password" name="password" id="password" ng-model="userInfo.password" placeholder="******" />
+						
+						<div class="col-md-12">
+							<input type="password" name="password" id="password" ng-model="userInfo.password" placeholder="请输入密码" class="form-control" required />
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-offset-2 col-md-10">
-							<a ui-sref="booklist({bookType:0})" class="btn btn-success btn-lg">登录</a>
-							<button class="btn btn-default btn-lg" ng-click="setFormData()">注册</button>
+						<div class="col-md-12">
+							<a ui-sref="booklist({bookType:0})" class="btn btn-success btn-lg col-md-12" ng-disabled="loginForm.username.$invalid || loginForm.password.$invalid">登录</a>
+							<!-- <button class="btn btn-default btn-lg" ng-click="setFormData()">注册</button> -->
 						</div>
 					</div>
 				</form>

@@ -1,7 +1,38 @@
+body{
+	font-family: "Microsoft YaHei";
+	background-color: #F3F3F3;
+
+}
+
 .nav, .pagination, .carousel, .panel-title a {
     cursor: pointer;
 }
 .gridStyle {
     border: 1px solid rgb(212, 212, 212);
     height: 300px
+}
+
+/**
+ * LoginForm
+ */
+
+
+.bg{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-image: url('../imgs/formBg.jpg');
+}
+
+
+.container-my{
+	position: relative;
+	width: 20%;
+	margin-top: 10%;
+	background-color: rgba(243,243,243,0.9);
+	border-radius: 10px;
+}
+
+h2{
+	font-family: "Microsoft YaHei";
 }
